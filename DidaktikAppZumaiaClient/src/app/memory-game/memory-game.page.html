@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Memoria Jolasa</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row align-items-center text-center size="8">
+        <ion-col align-self-center size="6" *ngFor="let c of cardsArray; let i = index">
+            <!-- Card Background -->
+            <img src='../assets/img/cards/bg2.jpg' *ngIf="c.pos != selectCard1pos && c.pos != selectCard2pos && c.val > -1" (click)="selectCard(c.pos, c.val, i)" class="card-bg">
+            <!-- First Selected Card -->
+            <img [src]="imageDir + images[c.val] + '.jpg'" *ngIf="c.pos == selectCard1pos && c.val > -1" class="card-bg">
+            <!-- Second Selected Card -->
+            <img [src]="imageDir + images[c.val] + '.jpg'" *ngIf="c.pos == selectCard2pos && c.val > -1" class="card-bg">
+            <!-- Hidden Card -->
+            <img *ngIf="c.val == -1" class="card-bg" style="visibility: hidden;">
+        </ion-col>
+    </ion-row>
+</ion-content>

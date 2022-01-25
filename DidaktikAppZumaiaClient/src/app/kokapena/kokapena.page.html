@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>kokapena</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-grid [fixed]="true">
+        <ion-row>
+            <ion-col>
+                <p><b>Id</b></p>
+            </ion-col>
+            <ion-col>
+                <p><b>Izena</b></p>
+            </ion-col>
+            <ion-col>
+                <p><b>Irudia</b></p>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let k of kokapena">
+            <ion-col>{{k.Id}} </ion-col>
+            <ion-col>{{k.Izena}}</ion-col>
+            <ion-col><img src="{{k.Irudia}}"></ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-button color="primary" size="small" (click)="goBack()">Bueltatu</ion-button>
+</ion-content>

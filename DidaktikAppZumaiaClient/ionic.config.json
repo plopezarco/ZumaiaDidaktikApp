@@ -1,0 +1,7 @@
+{
+  "name": "DidaktikAppZumaiaClient",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
