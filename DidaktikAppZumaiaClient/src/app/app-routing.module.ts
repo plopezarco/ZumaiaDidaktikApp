@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'memory-game',
     loadChildren: () => import('./memory-game/memory-game.module').then( m => m.MemoryGamePageModule)
+  },
+  {
+    path: 'puzzle-game',
+    loadChildren: () => import('./puzzle-game/puzzle-game.module').then( m => m.PuzzleGamePageModule)
   }
 ];
 
