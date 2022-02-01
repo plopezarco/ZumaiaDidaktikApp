@@ -12,4 +12,8 @@ export class MapPagePage implements OnInit {
 
   ngOnInit() {
   }
+
+  infoIkusi(){
+    this.route.navigate(['/info-page'])
+  }
 }

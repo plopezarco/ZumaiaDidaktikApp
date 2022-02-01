@@ -3,6 +3,7 @@ import { environment } from '@env/environment';
 import * as mapboxgl from 'mapbox-gl';
 import * as Leaflet from 'leaflet';
 import { Kokapena } from '../interfaces/kokapena';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,9 @@ export class MapService {
   lat = 43.29635084636639;
   lng = -2.2566499547403245;
   zoom = 13.5;
+  mapBoxToken: 'pk.eyJ1IjoicGxvcGV6YXJjbyIsImEiOiJja3ljeDA3dHMwcmtxMnJwNW9uNGJ2dWdoIn0.FnsH5eeftzNGgT5nay_UCw';
 
-
-  constructor() { }
+  constructor(private route: Router) { }
 
   buildMap(kokapenak: Kokapena[]) {
     if (this.map == null) {
@@ -38,14 +39,22 @@ export class MapService {
       id: 'mapbox/streets-v11',
       tileSize: 512,
       zoomOffset: -1,
-      accessToken: environment.mapBoxToken
+      accessToken: this.mapBoxToken
     }).addTo(this.map);
 
     if (kokapenak.length > 0) {
       kokapenak.forEach(e => {
         var marker = Leaflet.marker([Number.parseFloat(e.Latitudea), Number.parseFloat(e.Longitudea)]).addTo(this.map);
-        marker.bindPopup("<img style='width:200%; height:200%' src='" + e.Irudia + "'/><h4>" + e.Izena + `</h4><ion-button [routerLink]="['kokapena',`+ e.IdKokapena + `]">Jolastu</ion-button>`)
+        var content = "<img style='width:200%; height:200%' src='" + e.Irudia + "'/><h4>" + e.Izena + `</h4><ion-button id='kokapena-${e.IdKokapena}'>JOLASTU</ion-button>`
+        marker.bindPopup(content).on("click", e => {
+          if(e.type)
+          alert(`uwu`);
+        });
       })
     }
+  }
+
+  infoIkusi(){
+    this.route.navigate(['/info-page'])
   }
 }

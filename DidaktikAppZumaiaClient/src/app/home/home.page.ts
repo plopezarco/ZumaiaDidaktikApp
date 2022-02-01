@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -23,5 +23,19 @@ export class HomePage implements OnInit {
 
   puzzleZabaldu(){
     this.route.navigate(['/puzzle-game']);
+  }
+
+  drumZabaldu(){
+    this.route.navigate(['/drum-game'])
+  }
+
+  infoZabaldu(id: string){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        idKokapen: id
+      }
+    };
+
+    this.route.navigate(['/info-page'], navigationExtras);
   }
 }

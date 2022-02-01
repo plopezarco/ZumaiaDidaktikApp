@@ -9,8 +9,8 @@ export class MemoryGamePage implements OnInit {
 
   public cardsTotal = 10;
   public cardsArray = [];
-  public imageDir = '../assets/img/fruits/';
-  public images = ['apple', 'strawberry', 'cherry', 'peach', 'pear']
+  public imageDir = '../assets/img/memory/';
+  public images = ['arrauna', 'kresala', 'telmo_deun', 'trainera', 'zumaia']
 
   public selectCard1pos = -1;
   public selectCard1val = -1;

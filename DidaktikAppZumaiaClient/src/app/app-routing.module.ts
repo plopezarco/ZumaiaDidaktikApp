@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { MapComponent } from 'src/components/map/map.component';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'kokapena',
-    loadChildren: () => import('./kokapena/kokapena.module').then( m => m.KokapenaPageModule)
   },
   {
     path: 'map-page',
@@ -22,6 +17,14 @@ const routes: Routes = [
   {
     path: 'puzzle-game',
     loadChildren: () => import('./puzzle-game/puzzle-game.module').then( m => m.PuzzleGamePageModule)
+  },
+  {
+    path: 'drum-game',
+    loadChildren: () => import('./drum-game/drum-game.module').then( m => m.DrumGamePageModule)
+  },
+  {
+    path: 'info-page',
+    loadChildren: () => import('./info-page/info-page.module').then( m => m.InfoPagePageModule)
   }
 ];
 

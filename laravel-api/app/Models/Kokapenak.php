@@ -23,23 +23,24 @@ use Illuminate\Database\Eloquent\Model;
 class Kokapenak extends Model
 {
 	protected $table = 'kokapenak';
-	protected $primaryKey = 'IdKokapen';
+	protected $primaryKey = 'IdKokapena';
 	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'IdKokapen' => 'int'
+		'IdKokapena' => 'int'
 	];
 
 	protected $fillable = [
 		'Latitudea',
 		'Longitudea',
 		'Irudia',
-		'Izena'
+		'Izena',
+		'Deskribapena'
 	];
 
 	public function jokoaks()
 	{
-		return $this->hasMany(Jokoak::class, 'IdKokapen');
+		return $this->hasMany(Jokoak::class, 'IdKokapena');
 	}
 }

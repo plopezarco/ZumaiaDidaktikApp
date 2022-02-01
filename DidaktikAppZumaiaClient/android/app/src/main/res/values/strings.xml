@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">DidaktikApp Zumaia</string>
+    <string name="title_activity_main">DidaktikApp Zumaia</string>
+    <string name="package_name">com.unieibar.didaktikappzumaia</string>
+    <string name="custom_url_scheme">com.unieibar.didaktikappzumaia</string>
+</resources>

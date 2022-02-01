@@ -10,7 +10,7 @@
 <ion-content>
     <div class="board" [class.over]="over">
         <div *ngFor="let piece of pieces;" draggable="false">
-            <img [src]="piece.path" [id]="piece.index" draggable="true" (dragstart)="onDrag($event)" (drop)="onDrop($event)" (dragover)="onDragOver($event)" [class.placed]="!piece.misplaced">
+            <img [src]="piece.path" [id]="piece.index" draggable="true" (dragstart)="onDrag($event)" (drop)="onDrop($event)" (dragover)="onDragOver($event)" [class.placed]="!piece.misplaced" [class.allPlaced]="over">
         </div>
     </div>
 </ion-content>
