@@ -8,6 +8,7 @@ import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
 export class SmartAudioService {
 
   audioType: string = 'html5';
+  audioAsset;
     sounds: any = [];
     constructor(public nativeAudio: NativeAudio, platform: Platform) {
         if(platform.is('cordova')){
@@ -37,8 +38,8 @@ export class SmartAudioService {
             return sound.key === key;
         });
         if(audio.type === 'html5'){
-            let audioAsset = new Audio(audio.asset);
-            audioAsset.play();
+            this.audioAsset = new Audio(audio.asset);
+            this.audioAsset.play();
         } else {
             this.nativeAudio.play(audio.asset).then((res) => {
                 console.log(res);
@@ -46,5 +47,9 @@ export class SmartAudioService {
                 console.log(err);
             });
         }
+    }
+
+    pause(){
+        this.audioAsset.pause();
     }
 }

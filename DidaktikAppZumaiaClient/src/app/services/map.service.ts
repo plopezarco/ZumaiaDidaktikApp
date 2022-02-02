@@ -14,7 +14,7 @@ export class MapService {
   lat = 43.29635084636639;
   lng = -2.2566499547403245;
   zoom = 13.5;
-  mapBoxToken: 'pk.eyJ1IjoicGxvcGV6YXJjbyIsImEiOiJja3ljeDA3dHMwcmtxMnJwNW9uNGJ2dWdoIn0.FnsH5eeftzNGgT5nay_UCw';
+  mapBoxToken: 'pk.eyJ1IjoicGxvcGV6YXJjbyIsImEiOiJja3ljeDA3dHMwcmtxMnJwNW9uNGJ2dWdoIn0.FnsH5eeftzNGgT5nay_UCw.FnsH5eeftzNGgT5nay_UCw';
 
   constructor(private route: Router) { }
 
@@ -36,25 +36,22 @@ export class MapService {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
       minZoom: 14,
-      id: 'mapbox/streets-v11',
       tileSize: 512,
+      id: 'mapbox/streets-v11',
       zoomOffset: -1,
-      accessToken: this.mapBoxToken
+      accessToken: environment.mapBoxToken
     }).addTo(this.map);
 
     if (kokapenak.length > 0) {
       kokapenak.forEach(e => {
         var marker = Leaflet.marker([Number.parseFloat(e.Latitudea), Number.parseFloat(e.Longitudea)]).addTo(this.map);
         var content = "<img style='width:200%; height:200%' src='" + e.Irudia + "'/><h4>" + e.Izena + `</h4><ion-button id='kokapena-${e.IdKokapena}'>JOLASTU</ion-button>`
-        marker.bindPopup(content).on("click", e => {
-          if(e.type)
-          alert(`uwu`);
-        });
+        marker.bindPopup(content);
       })
     }
   }
 
-  infoIkusi(){
+  infoIkusi() {
     this.route.navigate(['/info-page'])
   }
 }
