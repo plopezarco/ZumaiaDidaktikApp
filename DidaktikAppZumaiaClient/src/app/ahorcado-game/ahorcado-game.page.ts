@@ -117,7 +117,7 @@ public async compruebaLetra() {
 
           // Mostramos un mensaje indicando el fallo.	
             let toast = await this.toastCtrl.create({
-              message: 'Akatsa, ' + letraMayusculas + '  letra ez dago hitz sekretuan. Gogoratu geratzen zaizkizula ' + this.vidas + ' bizitzak.',
+              message: 'Akatsa, ' + letraMayusculas + '  letra ez dago hitz sekretuan. Gogoratu geratzen zaizkizula ' + this.vidas + ' bizitza.',
               duration: this.durationMessages,
               cssClass: 'toast-danger',
               position: 'top'
@@ -144,7 +144,7 @@ public async compruebaLetra() {
       else{
       // En caso de que la letra ya hubiera sido seleccionada, mostramos un mensaje.
         let toast = await this.toastCtrl.create({
-          message:  letraMayusculas + ' A letra aurretik hautatu zen. Mesedez, aukeratu beste letra bat.',
+          message:  letraMayusculas + ' letra aurretik hautatu zen. Mesedez, aukeratu beste letra bat.',
           duration: this.durationMessages,
           cssClass: 'toast-warning',
           position: 'top'
@@ -272,7 +272,7 @@ public async resolver(solucion){
     this.puntos = this.puntos - 25;
 
     let toast = await this.toastCtrl.create({
-      message: 'Sentitzen dugu! ' + solucion + 'hitza ez da hitz sekretua. Zure akatsak 25 puntu kentzen dizkizu.',
+      message: 'Sentitzen dugu! ' + solucion + 'hitza ez da hitz sekretua.',
       duration: this.durationMessages,
       cssClass: 'toast-danger',
       position: 'top'
@@ -291,7 +291,7 @@ public async finDelJuego(valor) {
 
     // Mostramos el mensaje como que el juego ha terminado
       let toast = await this.toastCtrl.create({
-        message: 'Galdu egin duzu, saiatu berriro. Guztira ' + this.puntos + ' puntu lortu dituzu. Isilpeko hitza ' + this.nombreSecreto+' da',
+        message: 'Galdu egin duzu, saiatu berriro. ',
         duration: this.durationMessages,
         cssClass: 'toast-danger',
         position: 'top'
@@ -305,7 +305,7 @@ public async finDelJuego(valor) {
       this.ganador = 1;
 
       let toast = await this.toastCtrl.create({
-        message: 'Zorionak! Asmatu duzu isilpeko hitza. Guztira ' + this.puntos + ' puntu lortu dituzu.',
+        message: 'Zorionak! Asmatu duzu isilpeko hitza.',
         duration: this.durationMessages,
         cssClass: 'toast-success',
         position: 'top'

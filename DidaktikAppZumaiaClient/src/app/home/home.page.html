@@ -1,21 +1,22 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>Zumaia</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-    <ion-button (click)="mapaZabaldu()">Mapa ikusi</ion-button>
-    <ion-button (click)="memoryZabaldu()">MEMORY</ion-button>
-    <ion-button (click)="puzzleZabaldu()">PUZZLE</ion-button>
-    <ion-button (click)="drumZabaldu()">DRUM</ion-button>
-    <ion-button (click)="ahorcadoZabaldu()">AHORKADO</ion-button>
+    <div class="body">
+        <div id="container">
+            <div class="logo">
+                <img src="../assets/img/logo.png">
+            </div>
+            <ion-button (click)="mapaZabaldu()">Mapa ikusi</ion-button><br>
+            <ion-button (click)="memoryZabaldu()">MEMORY</ion-button><br>
+            <ion-button (click)="puzzleZabaldu()">PUZZLE</ion-button><br>
+            <ion-button (click)="drumZabaldu()">DRUM</ion-button><br>
+            <ion-button (click)="ahorcadoZabaldu()">Urkatua</ion-button><br>
 
-    <ion-button (click)="infoZabaldu('1')">1</ion-button>
-    <ion-button (click)="infoZabaldu('2')">2</ion-button>
-    <ion-button (click)="infoZabaldu('3')">3</ion-button>
-    <ion-button (click)="infoZabaldu('4')">4</ion-button>
-    <ion-button (click)="infoZabaldu('5')">5</ion-button>
-    <ion-button (click)="infoZabaldu('6')">6</ion-button>
-    <ion-button (click)="infoZabaldu('7')">7</ion-button>
+            <ion-button (click)="infoZabaldu('1')">1</ion-button>
+            <ion-button (click)="infoZabaldu('2')">2</ion-button>
+            <ion-button (click)="infoZabaldu('3')">3</ion-button>
+            <ion-button (click)="infoZabaldu('4')">4</ion-button><br>
+            <ion-button (click)="infoZabaldu('5')">5</ion-button>
+            <ion-button (click)="infoZabaldu('6')">6</ion-button>
+            <ion-button (click)="infoZabaldu('7')">7</ion-button>
+        </div>
+    </div>
 </ion-content>

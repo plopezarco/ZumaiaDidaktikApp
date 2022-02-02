@@ -16,6 +16,7 @@ export class HomePage implements OnInit {
   mapaZabaldu(){
     this.route.navigate(['/map-page']);
   }
+  
   ahorcadoZabaldu(){
     this.route.navigate(['/ahorcado-game']);
   }

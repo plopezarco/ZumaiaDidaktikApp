@@ -16,7 +16,7 @@ export class MapService {
   zoom = 13.5;
   mapBoxToken: 'pk.eyJ1IjoicGxvcGV6YXJjbyIsImEiOiJja3ljeDA3dHMwcmtxMnJwNW9uNGJ2dWdoIn0.FnsH5eeftzNGgT5nay_UCw.FnsH5eeftzNGgT5nay_UCw';
 
-  constructor(private route: Router) { }
+  constructor() { }
 
   buildMap(kokapenak: Kokapena[]) {
     if (this.map == null) {
@@ -51,7 +51,7 @@ export class MapService {
     }
   }
 
-  infoIkusi() {
-    this.route.navigate(['/info-page'])
+  destroyMap(){
+    this.map.remove();
   }
 }
