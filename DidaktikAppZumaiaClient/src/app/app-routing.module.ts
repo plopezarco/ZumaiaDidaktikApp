@@ -25,7 +25,11 @@ const routes: Routes = [
   {
     path: 'info-page',
     loadChildren: () => import('./info-page/info-page.module').then( m => m.InfoPagePageModule)
+  },  {
+    path: 'ahorcado-game',
+    loadChildren: () => import('./ahorcado-game/ahorcado-game.module').then( m => m.AhorcadoGamePageModule)
   }
+
 ];
 
 @NgModule({
