@@ -28,6 +28,10 @@ const routes: Routes = [
   },  {
     path: 'ahorcado-game',
     loadChildren: () => import('./ahorcado-game/ahorcado-game.module').then( m => m.AhorcadoGamePageModule)
+  },
+  {
+    path: 'jantziak-game',
+    loadChildren: () => import('./jantziak-game/jantziak-game.module').then( m => m.JantziakGamePageModule)
   }
 
 ];
