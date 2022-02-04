@@ -7,7 +7,7 @@ import { NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  
+
   constructor(private route: Router) {  }
 
   ngOnInit() {
@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
   mapaZabaldu(){
     this.route.navigate(['/map-page']);
   }
-  
+
   ahorcadoZabaldu(){
     this.route.navigate(['/ahorcado-game']);
   }
@@ -31,6 +31,10 @@ export class HomePage implements OnInit {
 
   drumZabaldu(){
     this.route.navigate(['/drum-game'])
+  }
+
+  wordSearchZabaldu(){
+    this.route.navigate(['/word-search-game']);
   }
 
   infoZabaldu(id: string){

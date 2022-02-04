@@ -28,6 +28,10 @@ const routes: Routes = [
   },  {
     path: 'ahorcado-game',
     loadChildren: () => import('./ahorcado-game/ahorcado-game.module').then( m => m.AhorcadoGamePageModule)
+  },
+  {
+    path: 'word-search-game',
+    loadChildren: () => import('./word-search-game/word-search-game.module').then( m => m.WordSearchGamePageModule)
   }
 
 ];
