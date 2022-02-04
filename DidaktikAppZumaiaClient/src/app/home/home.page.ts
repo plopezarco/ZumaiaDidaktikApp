@@ -33,8 +33,12 @@ export class HomePage implements OnInit {
     this.route.navigate(['/drum-game'])
   }
 
-  wordSearchZabaldu(){
+  wordSearchZabaldu() {
     this.route.navigate(['/word-search-game']);
+  }
+
+  jantziakZabaldu(){
+    this.route.navigate(['/jantziak-game']);
   }
 
   infoZabaldu(id: string){

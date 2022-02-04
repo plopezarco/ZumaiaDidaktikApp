@@ -13,7 +13,7 @@ export class MapService {
   map: Leaflet.Map;
   lat = 43.29635084636639;
   lng = -2.2566499547403245;
-  zoom = 13.5;
+  zoom = 15;
   mapBoxToken: 'pk.eyJ1IjoicGxvcGV6YXJjbyIsImEiOiJja3ljeDA3dHMwcmtxMnJwNW9uNGJ2dWdoIn0.FnsH5eeftzNGgT5nay_UCw.FnsH5eeftzNGgT5nay_UCw';
 
   constructor() { }
@@ -33,9 +33,9 @@ export class MapService {
     this.map.setView([this.lat, this.lng], this.zoom);
 
     Leaflet.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      //attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
-      minZoom: 14,
+      minZoom: 15,
       tileSize: 512,
       id: 'mapbox/streets-v11',
       zoomOffset: -1,

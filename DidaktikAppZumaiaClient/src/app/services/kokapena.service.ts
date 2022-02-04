@@ -26,7 +26,7 @@ export class KokapenaService {
     {"IdKokapena":4, "Latitudea":"43.297274264020785", "Longitudea":"-2.2560659880017853", "Izena":"Kultur-Etxea", "Irudia":"http://www.laventanadelarte.es/images/gipuzkoa/8052/centro-8052-18051810281199a5c9.jpg"},
     {"IdKokapena":5, "Latitudea":"43.29727140817687", "Longitudea":"-2.2566796719846027", "Izena":"San Pedro Eliza", "Irudia":"https://upload.wikimedia.org/wikipedia/commons/c/c9/Church_of_Saint_Peter_Zumaia.jpg"},
     {"IdKokapena":6, "Latitudea":"43.298988977136695", "Longitudea":"-2.2609761829002593", "Izena":"San Telmoko Ermita", "Irudia":"https://gmdavid.com/wp-content/uploads/2020/04/ermita-de-san-telmo-lateral.jpg"},
-    {"IdKokapena":7, "Latitudea":"43.30373221093571", "Longitudea":"-2.2463313669578127", "Izena":"Zumaiako Flysch-ak", "Irudia":"https://media.traveler.es/photos/6137691c86b46eac7cf59e2c/master/w_1600%2Cc_limit/153499.jpg"}];
+    {"IdKokapena":7, "Latitudea":"43.30083360796124", "Longitudea":"-2.2598230283274403", "Izena":"Zumaiako Flysch-ak", "Irudia":"https://media.traveler.es/photos/6137691c86b46eac7cf59e2c/master/w_1600%2Cc_limit/153499.jpg"}];
     return kokapenak;
   }
 }

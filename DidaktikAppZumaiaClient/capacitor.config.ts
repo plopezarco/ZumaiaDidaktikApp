@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.unieibar.didaktikappzumaia',
-  appName: 'DidaktikApp Zumaia',
+  appId: 'eus.unieibar.dam',
+  appName: 'DidaktikAppZumaia',
   webDir: 'www',
   bundledWebRuntime: false,
   cordova: {

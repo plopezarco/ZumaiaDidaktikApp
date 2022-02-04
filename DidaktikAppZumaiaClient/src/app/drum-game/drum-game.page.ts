@@ -11,11 +11,17 @@ export class DrumGamePage implements OnInit {
   public drumImg : number = 0;
   public imageDir = '../assets/img/drum/drum';
 
-  constructor(public smartAudio: SmartAudioService) {
+  constructor(public smartAudio: SmartAudioService, public smartAudio2 : SmartAudioService) {
     smartAudio.preload('drum', 'assets/audio/drum.mp3')
+    smartAudio2.preload('abestia', 'assets/audio/kokapen-5-1.mp3')
    }
 
   ngOnInit() {
+    this.smartAudio2.play('abestia');
+  }
+
+  ngOnDestroy(){
+    this.smartAudio2.pause();
   }
 
   playDrum(){

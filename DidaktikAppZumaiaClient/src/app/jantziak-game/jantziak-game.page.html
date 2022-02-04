@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Euskal Jantziak</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div align="center">
+        <img [src]="imageDir">
+    </div>
+    <div align="center" *ngFor="let hitz of hitzak">
+        <ion-button>{{hitz}}</ion-button>
+    </div>
+</ion-content>
