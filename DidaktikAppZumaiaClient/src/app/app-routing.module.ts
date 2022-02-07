@@ -25,9 +25,15 @@ const routes: Routes = [
   {
     path: 'info-page',
     loadChildren: () => import('./info-page/info-page.module').then( m => m.InfoPagePageModule)
-  },  {
+  },
+  {
     path: 'ahorcado-game',
     loadChildren: () => import('./ahorcado-game/ahorcado-game.module').then( m => m.AhorcadoGamePageModule)
+  },
+  {
+
+    path: 'word-search-game',
+    loadChildren: () => import('./word-search-game/word-search-game.module').then(m => m.WordSearchGamePageModule)
   },
   {
     path: 'jantziak-game',

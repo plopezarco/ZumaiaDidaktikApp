@@ -1,0 +1,10 @@
+.card-bg {
+  display: block;
+  margin: auto;
+  width: 150px;
+  height: 100px;
+  border: solid 2px #fff;
+  border-radius: 12px;
+}
+
+/*# sourceMappingURL=memory-game.page.css.map */
