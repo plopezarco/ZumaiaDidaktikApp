@@ -94,7 +94,7 @@ export class StadiumInGrid {
       pointer-events: none;
       touch-action: none;
       position: absolute;
-      border: 5px solid black;
+      border: 3px solid black;
       z-index: 99;
       display: ${this.innerGrid && this.innerRadius || this.correct ? 'block' : 'none'};
       ${this.correct ? 'border-color: darkgreen;' : '' }
