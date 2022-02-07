@@ -5,6 +5,8 @@ import {convertCssUnit as cu} from '../../sebastian-functions/convertCssUnit';
 import {Segment2d} from '../../sebastian-functions/segment2d';
 import {CssDistanceUnit} from '../../sebastian-functions/css-distance-unit';
 import {Grid2dCssUnit} from '../../sebastian-functions/grid2d';
+import { AlertController } from '@ionic/angular';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-word-search-game',
@@ -41,7 +43,7 @@ export class WordSearchGamePage implements OnInit {
   private mouseIsDown = false;
 
 
-  constructor() {
+  constructor(private route: Router, public alertController: AlertController) {
     this.parent = null;
     this.rect = null;
     this.stg = null;
@@ -198,9 +200,17 @@ export class WordSearchGamePage implements OnInit {
             // No, we are not done
             this.stg.span.style.display = 'none';
             this.parent.appendChild(this.stg.span);
-          }
-          else {
-            // Yes, we are done.
+          } else {
+            this.alertController.create({
+              header: 'Zorionak!',
+              message: 'Irabazi duzuuu!!!!',
+              buttons: ['Jai, jai!', 'OK.']
+            })
+              .then(
+                iEndAlert => Promise.all([iEndAlert.present(), iEndAlert.onDidDismiss()])
+              )
+              .then(() => this.route.navigate(['/']));
+
           }
           break;
         }
