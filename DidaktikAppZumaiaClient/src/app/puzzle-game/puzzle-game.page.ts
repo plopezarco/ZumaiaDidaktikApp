@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 type Piece = { index: number, id: number, misplaced: boolean, path: string };
 
@@ -14,7 +16,7 @@ export class PuzzleGamePage implements OnInit {
   over: boolean = false;
   pieces: Array<Piece> = [];
 
-  constructor() { }
+  constructor(public alertController: AlertController, private route: Router) { }
 
   ngOnInit() {
     this.reset();
@@ -83,8 +85,22 @@ export class PuzzleGamePage implements OnInit {
       this.over = this.isOver()
     }
     if(this.isOver()){
-      setTimeout(() => {alert('you win');}, 500) 
+      setTimeout(() => {this.presentAlertConfirm()}, 500) 
     }
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Irabazi Duzu!',
+      message: '<img src="https://img.freepik.com/vector-gratis/trofeo-oro-placa-ganador-concurso_68708-545.jpg?size=338&ext=jpg">',
+      buttons: [{
+        text: 'OK', handler: () => {
+            this.route.navigate(['/map-page']);
+        }
+      }]
+    });
+    await alert.present();
   }
 
   onDrag(ev): void {

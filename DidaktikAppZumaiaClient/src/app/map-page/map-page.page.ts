@@ -14,6 +14,10 @@ export class MapPagePage implements OnInit {
   }
 
   infoIkusi(){
-    this.route.navigate(['/info-page'])
+    this.route.navigate(['/puzzle-game'])
+  }
+
+  homeZabaldu(){
+    this.route.navigate([''])
   }
 }

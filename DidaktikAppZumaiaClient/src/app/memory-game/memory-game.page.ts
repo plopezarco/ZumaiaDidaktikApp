@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-memory-game',
@@ -18,7 +20,21 @@ export class MemoryGamePage implements OnInit {
   public selectCard2val = -1;
   public selectOldPosiX = -1;
 
-  constructor() { }
+  constructor(public alertController: AlertController, private route: Router) { }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Irabazi Duzu!',
+      message: '<img src="https://img.freepik.com/vector-gratis/trofeo-oro-placa-ganador-concurso_68708-545.jpg?size=338&ext=jpg">',
+      buttons: [{
+        text: 'OK', handler: () => {
+            this.route.navigate(['/map-page']);
+        }
+      }]
+    });
+    await alert.present();
+  }
 
   ngOnInit() {
     this.populateCards();
@@ -61,10 +77,10 @@ export class MemoryGamePage implements OnInit {
     if (actionOne && this.selectCard1pos > -1 && this.selectCard2pos > -1) {
       setTimeout(() => {
         if (this.selectCard1val == this.selectCard2val) {
-          this.cardsArray.splice(this.selectOldPosiX, 1, {pos: this.selectOldPosiX, val: -1});
-          this.cardsArray.splice(i, 1, {pos: i, val: -1});
-          if(this.winCon()){
-            alert("you win!")
+          this.cardsArray.splice(this.selectOldPosiX, 1, { pos: this.selectOldPosiX, val: -1 });
+          this.cardsArray.splice(i, 1, { pos: i, val: -1 });
+          if (this.winCon()) {
+            this.presentAlertConfirm();
           }
         }
         this.resetSelects();
@@ -91,9 +107,9 @@ export class MemoryGamePage implements OnInit {
     this.selectCard2val = -1;
   }
 
-  winCon(){
-    for(var i = 0; i < this.cardsArray.length; i++){
-      if(this.cardsArray[i].val != -1) return false;
+  winCon() {
+    for (var i = 0; i < this.cardsArray.length; i++) {
+      if (this.cardsArray[i].val != -1) return false;
     }
     return true
   }

@@ -280,7 +280,6 @@ public async resolver(solucion){
     toast.present();
   }
 
-
 }
 
 public async finDelJuego(valor) { 

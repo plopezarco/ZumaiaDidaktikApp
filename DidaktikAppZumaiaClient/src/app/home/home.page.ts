@@ -16,6 +16,7 @@ export class HomePage implements OnInit {
   mapaZabaldu(){
     this.route.navigate(['/map-page']);
   }
+<<<<<<< Updated upstream
 
   ahorcadoZabaldu(){
     this.route.navigate(['/ahorcado-game']);
@@ -53,4 +54,6 @@ export class HomePage implements OnInit {
 
     this.route.navigate(['/info-page'], navigationExtras);
   }
+=======
+>>>>>>> Stashed changes
 }
