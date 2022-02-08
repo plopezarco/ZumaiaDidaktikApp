@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'jantziak-game',
     loadChildren: () => import('./jantziak-game/jantziak-game.module').then( m => m.JantziakGamePageModule)
+  },  {
+    path: 'asmakizuna',
+    loadChildren: () => import('./asmakizuna/asmakizuna.module').then( m => m.AsmakizunaPageModule)
   }
+
 
 ];
 

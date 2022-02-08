@@ -40,6 +40,9 @@ export class HomePage implements OnInit {
   jantziakZabaldu(){
     this.route.navigate(['/jantziak-game']);
   }
+  asmakizunaZabaldu(){
+    this.route.navigate(['/asmakizuna']);
+  }
 
   infoZabaldu(id: string){
     let navigationExtras: NavigationExtras = {
