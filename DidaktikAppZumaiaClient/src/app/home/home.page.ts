@@ -16,44 +16,4 @@ export class HomePage implements OnInit {
   mapaZabaldu(){
     this.route.navigate(['/map-page']);
   }
-<<<<<<< Updated upstream
-
-  ahorcadoZabaldu(){
-    this.route.navigate(['/ahorcado-game']);
-  }
-
-  memoryZabaldu(){
-    this.route.navigate(['/memory-game']);
-  }
-
-  puzzleZabaldu(){
-    this.route.navigate(['/puzzle-game']);
-  }
-
-  drumZabaldu(){
-    this.route.navigate(['/drum-game'])
-  }
-
-  wordSearchZabaldu() {
-    this.route.navigate(['/word-search-game']);
-  }
-
-  jantziakZabaldu(){
-    this.route.navigate(['/jantziak-game']);
-  }
-  asmakizunaZabaldu(){
-    this.route.navigate(['/asmakizuna']);
-  }
-
-  infoZabaldu(id: string){
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        idKokapen: id
-      }
-    };
-
-    this.route.navigate(['/info-page'], navigationExtras);
-  }
-=======
->>>>>>> Stashed changes
 }
