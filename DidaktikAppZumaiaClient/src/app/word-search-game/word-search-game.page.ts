@@ -201,15 +201,18 @@ export class WordSearchGamePage implements OnInit {
             this.stg.span.style.display = 'none';
             this.parent.appendChild(this.stg.span);
           } else {
+            // Yes, we are done!
             this.alertController.create({
               header: 'Zorionak!',
               message: 'Irabazi duzuuu!!!!',
-              buttons: ['Jai, jai!', 'OK.']
+              buttons: ['Jai, jai!']
             })
               .then(
                 iEndAlert => Promise.all([iEndAlert.present(), iEndAlert.onDidDismiss()])
               )
-              .then(() => this.route.navigate(['/']));
+              .then(
+                () => this.route.navigate(['/map-page'])
+              );
 
           }
           break;
