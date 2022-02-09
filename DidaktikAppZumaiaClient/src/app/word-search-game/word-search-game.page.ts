@@ -211,7 +211,7 @@ export class WordSearchGamePage implements OnInit {
                 iEndAlert => Promise.all([iEndAlert.present(), iEndAlert.onDidDismiss()])
               )
               .then(
-                () => this.route.navigate(['/'])
+                () => this.route.navigate(['/map-page'])
               );
 
           }

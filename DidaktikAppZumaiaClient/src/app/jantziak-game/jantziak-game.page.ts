@@ -23,7 +23,7 @@ export class JantziakGamePage implements OnInit {
 
   public botoiak: string[] = Array.from(this.soluzioa.keys());
 
-  public focus: string = null;
+  public focus: string = '';
 
   public rect: DOMRect = new DOMRect();
 
@@ -53,7 +53,7 @@ export class JantziakGamePage implements OnInit {
       'box-shadow': ''
     };
     if (!this.answered.has(hitz)) {
-      ret['background-color'] = '#0036';
+      ret['background-color'] = `#003${this.focus === '' ? 3 : 6}`;
       ret['min-width'] = this.rect.width * 0.2 + 'px';
       const p: [number, number][] = (<T, >(vInner: T[]): [T, T][] => {
         const retInner: [T, T][] = [];
@@ -65,7 +65,7 @@ export class JantziakGamePage implements OnInit {
         return retInner;
       })([-3, 3]);
       for (const [i, j] of p) {
-        ret['box-shadow'] += `${i}px ${j}px 5px #0036, `;
+        ret['box-shadow'] += `${i}px ${j}px 5px #003${this.focus === '' ? 0 : 6}, `;
       }
       ret['box-shadow'] = ret['box-shadow'].slice(0, -2);
       console.log(ret['box-shadow']);
@@ -92,7 +92,7 @@ export class JantziakGamePage implements OnInit {
             iEndAlert => Promise.all([iEndAlert.present(), iEndAlert.onDidDismiss()])
           )
           .then(
-            () => this.route.navigate(['/'])
+            () => this.route.navigate(['/map-page'])
           );
       }
     }
