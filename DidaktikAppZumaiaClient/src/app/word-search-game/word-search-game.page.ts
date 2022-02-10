@@ -1,12 +1,12 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {StadiumInGrid} from '../../sebastian-functions/stadium-in-grid';
-import {Vector2d, Vector2dCssUnit} from '../../sebastian-functions/vector2d';
-import {convertCssUnit as cu} from '../../sebastian-functions/convertCssUnit';
-import {Segment2d} from '../../sebastian-functions/segment2d';
-import {CssDistanceUnit} from '../../sebastian-functions/css-distance-unit';
-import {Grid2dCssUnit} from '../../sebastian-functions/grid2d';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { StadiumInGrid } from '../../sebastian-functions/stadium-in-grid';
+import { Vector2d, Vector2dCssUnit } from '../../sebastian-functions/vector2d';
+import { convertCssUnit as cu } from '../../sebastian-functions/convertCssUnit';
+import { Segment2d } from '../../sebastian-functions/segment2d';
+import { CssDistanceUnit } from '../../sebastian-functions/css-distance-unit';
+import { Grid2dCssUnit } from '../../sebastian-functions/grid2d';
 import { AlertController } from '@ionic/angular';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-word-search-game',
@@ -20,10 +20,10 @@ export class WordSearchGamePage implements OnInit {
 
   private stg: StadiumInGrid;
 
-// parameter for StadiumInGrid constructor.
+  // parameter for StadiumInGrid constructor.
   private stgParameter: {
     start: Vector2dCssUnit;
-    blankSpace: {length: number; unit: CssDistanceUnit};
+    blankSpace: { length: number; unit: CssDistanceUnit };
     quantity: Vector2d;
   };
 
@@ -31,11 +31,11 @@ export class WordSearchGamePage implements OnInit {
   private readonly oldStgs: StadiumInGrid[];
 
 
-// Here correct answers will be stored.
+  // Here correct answers will be stored.
   private answered: Set<number>;
 
 
-// store answers in Segment2d array
+  // store answers in Segment2d array
   private answer: Segment2d[];
 
   private readonly mousePosition: Segment2d;
@@ -50,23 +50,23 @@ export class WordSearchGamePage implements OnInit {
     this.stgParameter = null;
     this.oldStgs = [];
     this.answered = new Set();
-    this.answer = ((arr: [number,number,number,number][]): Segment2d[] => {
-        const ret: Segment2d[] = [];
-        for (const seg of arr) {
-          ret.push(new Segment2d({
-            start: new Vector2d(seg[0], seg[1]),
-            end: new Vector2d(seg[2], seg[3])
-          }));
-        }
-        return ret;
+    this.answer = ((arr: [number, number, number, number][]): Segment2d[] => {
+      const ret: Segment2d[] = [];
+      for (const seg of arr) {
+        ret.push(new Segment2d({
+          start: new Vector2d(seg[0], seg[1]),
+          end: new Vector2d(seg[2], seg[3])
+        }));
       }
+      return ret;
+    }
     )([[3, 0, 9, 0], [1, 1, 5, 1], [0, 3, 8, 3], [3, 4, 8, 4], [0, 5, 5, 5], [3, 8, 8, 8]]);
     this.mouseIsDown = false;
-    this.mousePosition = new Segment2d({start: new Vector2d(0, 0), end: new Vector2d(0, 0)});
+    this.mousePosition = new Segment2d({ start: new Vector2d(0, 0), end: new Vector2d(0, 0) });
   }
 
   get left(): number {
-    return this.answer.length -this.answered.size;
+    return this.answer.length - this.answered.size;
   }
 
   get color(): string {
@@ -82,7 +82,7 @@ export class WordSearchGamePage implements OnInit {
     this.rect = this.parent.getBoundingClientRect();
     this.stgParameter = {
       start: new Vector2dCssUnit(0.1 * this.rect.width, 0.1 * this.rect.height, 'px', 'px'),
-      blankSpace: {length: 0.08 * this.rect.width, unit: 'px'},
+      blankSpace: { length: 0.08 * this.rect.width, unit: 'px' },
       quantity: new Vector2d(10, 10)
     };
     const newGrid = new Grid2dCssUnit(this.stgParameter);
@@ -102,14 +102,16 @@ export class WordSearchGamePage implements OnInit {
     this.parent = document.querySelector('div#one-by-one-aspect-ratio');
     this.rect = this.parent.getBoundingClientRect();
 
-    if (this.rect.height === 0) {setTimeout(() => {
-      this.parent = document.querySelector('div#one-by-one-aspect-ratio');
-      this.onResize();
-    }, 500);}
+    if (this.rect.height === 0) {
+      setTimeout(() => {
+        this.parent = document.querySelector('div#one-by-one-aspect-ratio');
+        this.onResize();
+      }, 500);
+    }
 
     this.stgParameter = {
       start: new Vector2dCssUnit(0.1 * this.rect.width, 0.1 * this.rect.height, 'px', 'px'),
-      blankSpace: {length: 0.08 * this.rect.width, unit: 'px'},
+      blankSpace: { length: 0.08 * this.rect.width, unit: 'px' },
       quantity: new Vector2d(10, 10)
     };
     this.stg = new StadiumInGrid(this.stgParameter);
@@ -119,11 +121,11 @@ export class WordSearchGamePage implements OnInit {
     this.parent.appendChild(this.stg.span);
 
     this.onResize();
-    this.parent.addEventListener('pointermove', (evt) => {this.onPointerMove(evt);});
-    this.parent.addEventListener('pointerdown', (evt) => {this.onPointerDown(evt);});
-    this.parent.addEventListener('pointerup', (evt) => {this.onPointerUp(evt);});
-    this.parent.addEventListener('pointerout', (evt) => {this.onPointerUp(evt);});
-    this.parent.addEventListener('pointercancel', (evt) => {this.onPointerUp(evt);});
+    this.parent.addEventListener('pointermove', (evt) => { this.onPointerMove(evt); });
+    this.parent.addEventListener('pointerdown', (evt) => { this.onPointerDown(evt); });
+    this.parent.addEventListener('pointerup', (evt) => { this.onPointerUp(evt); });
+    this.parent.addEventListener('pointerout', (evt) => { this.onPointerUp(evt); });
+    this.parent.addEventListener('pointercancel', (evt) => { this.onPointerUp(evt); });
   }
 
 
@@ -203,17 +205,19 @@ export class WordSearchGamePage implements OnInit {
           } else {
             // Yes, we are done!
             this.alertController.create({
-              header: 'Zorionak!',
-              message: 'Irabazi duzuuu!!!!',
-              buttons: ['Jai, jai!']
+              cssClass: 'my-custom-class',
+              header: 'Irabazi Duzu!',
+              message: '<img src="https://img.freepik.com/vector-gratis/trofeo-oro-placa-ganador-concurso_68708-545.jpg?size=338&ext=jpg">',
+              buttons: [{
+                text: 'OK', handler: () => {
+                  this.route.navigate(['/map-page']);
+                }
+              }],
+              backdropDismiss: false
             })
               .then(
                 iEndAlert => Promise.all([iEndAlert.present(), iEndAlert.onDidDismiss()])
               )
-              .then(
-                () => this.route.navigate(['/map-page'])
-              );
-
           }
           break;
         }

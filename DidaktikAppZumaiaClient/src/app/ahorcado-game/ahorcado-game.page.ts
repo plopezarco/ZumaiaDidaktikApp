@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 // Importación necesaria para mensajes flash.
 import { ToastController } from '@ionic/angular';
@@ -33,7 +34,7 @@ controlLetras = new Array;
 
 constructor(public navCtrl: NavController, 
       private toastCtrl: ToastController,
-      public alertCtrl: AlertController) {  }
+      public alertCtrl: AlertController, private route: Router) {  }
 
 // Método que valida la letra seleccionada.	
 public async compruebaLetra() {
@@ -186,42 +187,6 @@ public nuevaImagen(imagen) {
     return this.imagen;
 }
 
-public confirmarResolver(){
-  this.showPrompt();
-}
-
-public async showPrompt() {
-  const prompt = this.alertCtrl.create({
-    header: 'Zuzeneko irtenbidea',
-      message: "Ziur zaude isilpeko hitza zuzenean ebazteaz?",
-      inputs: [
-      {
-          name: 'palabraSolucion',
-          id: 'palabraSolucion',
-          placeholder: this.palabra
-      },
-      ],
-      buttons: [
-      {
-          text: 'Deuseztatu',
-          handler: data => {
-            // Se cierra ventana.
-          }
-      },
-      {
-          text: 'Erabaki',
-          handler: data => {
-            // Llamamos a método que compara la palabra secreta con la insertada mediante teclado.
-            // var solucion = this.palabra.toString();
-            // var solucion = solucion.replace(/,/g, '');
-        var solucion = ((document.getElementById("palabraSolucion") as HTMLInputElement).value);
-            this.resolver(solucion);
-          }
-      }]
-  });
-  (await prompt).present();
-}
-
 public async showConfirm(accion) {
 
   // Resolver
@@ -282,6 +247,21 @@ public async resolver(solucion){
 
 }
 
+async presentAlertConfirm() {
+  const alert = await this.alertCtrl.create({
+    cssClass: 'my-custom-class',
+    header: 'Irabazi Duzu!',
+    message: '<img src="https://img.freepik.com/vector-gratis/trofeo-oro-placa-ganador-concurso_68708-545.jpg?size=338&ext=jpg">',
+    buttons: [{
+      text: 'OK', handler: () => {
+          this.route.navigate(['/map-page']);
+      }
+    }],
+    backdropDismiss: false
+  });
+  await alert.present();
+}
+
 public async finDelJuego(valor) { 
     // Perdedor
     if (valor == 'pierde') {
@@ -296,6 +276,7 @@ public async finDelJuego(valor) {
         position: 'top'
       });
     toast.present();
+    
   }
 
     // Ganador
@@ -303,13 +284,7 @@ public async finDelJuego(valor) {
 
       this.ganador = 1;
 
-      let toast = await this.toastCtrl.create({
-        message: 'Zorionak! Asmatu duzu isilpeko hitza.',
-        duration: this.durationMessages,
-        cssClass: 'toast-success',
-        position: 'top'
-      });
-    toast.present();
+      this.presentAlertConfirm();
     }		
 }
 

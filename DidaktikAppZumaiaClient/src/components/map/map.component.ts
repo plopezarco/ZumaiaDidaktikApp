@@ -4,6 +4,7 @@ import { Kokapena } from 'src/app/interfaces/kokapena';
 import { KokapenaService } from 'src/app/services/kokapena.service';
 import { NavigationExtras, Router } from '@angular/router';
 import * as Leaflet from 'leaflet';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-map',
@@ -15,7 +16,7 @@ export class MapComponent implements OnInit {
 
   mapL: Leaflet.Map;
 
-  constructor(private map: MapService, private kokapenaService: KokapenaService, private route: Router, private el: ElementRef) { }
+  constructor(private map: MapService, private kokapenaService: KokapenaService, private route: Router, public loadingController: LoadingController) { }
 
   async getKokapenakAPI() {
     this.kokapenaService.getKokapenak().subscribe(data => {
@@ -54,7 +55,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.map = new MapService();
-    this.getKokapenak()
+    this.getKokapenakAPI()
   }
 
   ngOnDestroy() {
@@ -67,7 +68,19 @@ export class MapComponent implements OnInit {
         idKokapen: id
       }
     };
-
     this.route.navigate(['/info-page'], navigationExtras);
+   // this.presentLoading().then(()=> {this.route.navigate(['/info-page'], navigationExtras);})
   }
+
+  /*async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Itxaron mesedez...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
+  }*/
 }

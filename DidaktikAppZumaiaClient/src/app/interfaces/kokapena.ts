@@ -4,4 +4,5 @@ export interface Kokapena {
     Longitudea: string;
     Izena: string;
     Irudia: string;
+    Deskribapena: string;
 }

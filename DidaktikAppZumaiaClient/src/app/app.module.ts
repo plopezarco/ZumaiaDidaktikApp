@@ -12,6 +12,7 @@ import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
 import { Drivers } from '@ionic/storage';
 import { SmartAudioService } from './services/smart-audio.service';
 import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
+import { Media } from '@ionic-native/media/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,7 @@ import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
     IonicStorageModule.forRoot({
     driverOrder: [CordovaSQLiteDriver._driver, Drivers.IndexedDB]
   })],
-  providers: [NativeAudio, SmartAudioService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [NativeAudio, Media, SmartAudioService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

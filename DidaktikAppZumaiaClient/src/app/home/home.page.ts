@@ -16,4 +16,8 @@ export class HomePage implements OnInit {
   mapaZabaldu(){
     this.route.navigate(['/map-page']);
   }
+
+  aboutusZabaldu(){
+    this.route.navigate(['/about-us']);
+  }
 }

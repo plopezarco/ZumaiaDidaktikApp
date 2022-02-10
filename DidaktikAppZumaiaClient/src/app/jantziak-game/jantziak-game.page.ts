@@ -1,7 +1,7 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {Vector2d} from '../../sebastian-functions/vector2d';
-import {Router} from "@angular/router";
-import {AlertController} from "@ionic/angular";
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Vector2d } from '../../sebastian-functions/vector2d';
+import { Router } from "@angular/router";
+import { AlertController } from "@ionic/angular";
 
 @Component({
   selector: 'app-jantziak-game',
@@ -55,7 +55,7 @@ export class JantziakGamePage implements OnInit {
     if (!this.answered.has(hitz)) {
       ret['background-color'] = `#003${this.focus === '' ? 3 : 6}`;
       ret['min-width'] = this.rect.width * 0.2 + 'px';
-      const p: [number, number][] = (<T, >(vInner: T[]): [T, T][] => {
+      const p: [number, number][] = (<T,>(vInner: T[]): [T, T][] => {
         const retInner: [T, T][] = [];
         for (const x of vInner) {
           for (const y of vInner) {
@@ -84,16 +84,19 @@ export class JantziakGamePage implements OnInit {
       if (this.answered.size >= this.soluzioa.size) {
         // We are done!
         this.alertController.create({
-          header: 'Zorionak!',
-          message: 'Irabazi duzuuu!!!!',
-          buttons: ['Jai, jai!']
+          cssClass: 'my-custom-class',
+          header: 'Irabazi Duzu!',
+          message: '<img src="https://img.freepik.com/vector-gratis/trofeo-oro-placa-ganador-concurso_68708-545.jpg?size=338&ext=jpg">',
+          buttons: [{
+            text: 'OK', handler: () => {
+              this.route.navigate(['/map-page']);
+            }
+          }],
+          backdropDismiss: false
         })
           .then(
             iEndAlert => Promise.all([iEndAlert.present(), iEndAlert.onDidDismiss()])
           )
-          .then(
-            () => this.route.navigate(['/map-page'])
-          );
       }
     }
     else {

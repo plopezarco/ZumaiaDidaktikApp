@@ -31,7 +31,8 @@ export class MemoryGamePage implements OnInit {
         text: 'OK', handler: () => {
             this.route.navigate(['/map-page']);
         }
-      }]
+      }],
+      backdropDismiss: false
     });
     await alert.present();
   }

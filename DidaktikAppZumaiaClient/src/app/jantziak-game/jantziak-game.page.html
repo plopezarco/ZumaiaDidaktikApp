@@ -1,33 +1,22 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Euskal Jantziak</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Euskal Jantziak</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div style="text-align: center">
-    <img id="monigote1" [src]="imageDir">
-  </div>
-  <div style="text-align: center" *ngFor="let hitz of botoiak">
-    <ion-button
-      [color]="focus === hitz ? 'secondary' : 'primary'"
-      [hidden]="answered.has(hitz)"
-      (click)="onClick(hitz)"
-    >
-      {{hitz}}
-    </ion-button>
-  </div>
-  <ng-container *ngFor="let hitz of soluzioa.keys()">
-    <div
-      [innerText]="answered.has(hitz) ? hitz : ''"
-      [id]="hitz" class="gakoa"
-      [ngStyle]="getStyle(hitz)"
-      [ngClass]="animated.has(hitz) ? 'apply-shake-minus50' : ''"
-      (animationend)="animated.delete(hitz)"
-      (mousedown)="onMouseDown(hitz)"
-    ></div>
-  </ng-container>
+    <div style="text-align: center">
+        <img id="monigote1" [src]="imageDir">
+    </div>
+    <div style="text-align: center" *ngFor="let hitz of botoiak">
+        <ion-button [color]="focus === hitz ? 'secondary' : 'primary'" [hidden]="answered.has(hitz)" (click)="onClick(hitz)">
+            {{hitz}}
+        </ion-button>
+    </div>
+    <ng-container *ngFor="let hitz of soluzioa.keys()">
+        <div style="color: black;" [innerText]="answered.has(hitz) ? hitz : ''" [id]="hitz" class="gakoa" [ngStyle]="getStyle(hitz)" [ngClass]="animated.has(hitz) ? 'apply-shake-minus50' : ''" (animationend)="animated.delete(hitz)" (mousedown)="onMouseDown(hitz)"></div>
+    </ng-container>
 </ion-content>
