@@ -74,7 +74,7 @@ export class InfoPagePage implements OnInit {
         ruta = '/drum-game'
         break;
       case '6':
-        ruta = ''
+        ruta = '/asmakizuna'
         break;
       case '7':
         ruta = '/word-search-game'
