@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   templateUrl: './word-search-game.page.html',
   styleUrls: ['./word-search-game.page.scss'],
 })
-export class WordSearchGamePage implements OnInit {
+export class WordSearchGamePage {
 
   private parent: HTMLDivElement;
   private rect: DOMRect;
@@ -42,6 +42,8 @@ export class WordSearchGamePage implements OnInit {
 
   private mouseIsDown = false;
 
+  private answers: string[];
+
 
   constructor(private route: Router, public alertController: AlertController) {
     this.parent = null;
@@ -61,6 +63,7 @@ export class WordSearchGamePage implements OnInit {
       return ret;
     }
     )([[3, 0, 9, 0], [1, 1, 5, 1], [0, 3, 8, 3], [3, 4, 8, 4], [0, 5, 5, 5], [3, 8, 8, 8]]);
+    this.answers = ['erliebe', 'fosil', 'dinosauro', 'arroka', 'flysch', 'geruza'];
     this.mouseIsDown = false;
     this.mousePosition = new Segment2d({ start: new Vector2d(0, 0), end: new Vector2d(0, 0) });
   }
@@ -71,10 +74,6 @@ export class WordSearchGamePage implements OnInit {
 
   get color(): string {
     return this.left === 0 ? 'success' : 'danger';
-  }
-
-  get target(): HTMLElement {
-    return document.querySelector('ion-badge');
   }
 
   @HostListener('window:resize')
@@ -91,11 +90,6 @@ export class WordSearchGamePage implements OnInit {
     }
     this.stg.grid = newGrid;
     this.stg.span.style.display = 'none';
-  }
-
-  ngOnInit() {
-    this.target.setAttribute('color', this.color);
-    this.target.innerHTML = `${this.left}`;
   }
 
   ionViewDidEnter() {
@@ -121,13 +115,26 @@ export class WordSearchGamePage implements OnInit {
     this.parent.appendChild(this.stg.span);
 
     this.onResize();
-    this.parent.addEventListener('pointermove', (evt) => { this.onPointerMove(evt); });
-    this.parent.addEventListener('pointerdown', (evt) => { this.onPointerDown(evt); });
-    this.parent.addEventListener('pointerup', (evt) => { this.onPointerUp(evt); });
-    this.parent.addEventListener('pointerout', (evt) => { this.onPointerUp(evt); });
-    this.parent.addEventListener('pointercancel', (evt) => { this.onPointerUp(evt); });
   }
 
+  private onButtonClick() {
+    this.alertController.create({
+      header: 'Geratzen dira',
+      message: ((): string => {
+        let ret = '';
+        for (const [i, ans] of this.answers.entries()) {
+          if (!this.answered.has(i)) {
+            ret += ans.toLocaleUpperCase() + '<br>';
+          }
+        }
+        return ret;
+      })(),
+      buttons: ['OK.']
+    })
+      .then(
+        iEndAlert => Promise.all([iEndAlert.present(), iEndAlert.onDidDismiss()])
+      );
+  }
 
 
   private onPointerMove(evt) {
@@ -192,11 +199,6 @@ export class WordSearchGamePage implements OnInit {
           this.oldStgs.push(this.stg);
           this.stg = new StadiumInGrid(this.stgParameter);
 
-          const color = this.left === 0 ? 'success' : 'danger';
-          const target = document.querySelector('ion-badge');
-          target.setAttribute('color', color);
-          target.innerHTML = `${this.left}`;
-
           // Are we done?
           if (this.left) {
             // No, we are not done
@@ -217,7 +219,7 @@ export class WordSearchGamePage implements OnInit {
             })
               .then(
                 iEndAlert => Promise.all([iEndAlert.present(), iEndAlert.onDidDismiss()])
-              )
+              );
           }
           break;
         }

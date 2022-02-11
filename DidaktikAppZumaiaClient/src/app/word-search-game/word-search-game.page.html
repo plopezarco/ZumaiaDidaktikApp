@@ -1,24 +1,19 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Hizki Salda</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Hizki Salda</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 <ion-button (click)="onButtonClick()" expand="full" [color]="left === 0 ? 'success' : 'danger'">
-  Falta zaizkizu: &nbsp;
-  <span [innerText]="left">kalkulatzen...</span>
+    Falta zaizkizu: &nbsp;
+    <span [innerText]="left">kalkulatzen...</span>
 </ion-button>
 
 <div id="main">
-  <div class="wrapper">
-    <div
-      id="one-by-one-aspect-ratio"
-      (pointerdown)="onPointerDown($event)"
-      (pointermove)="onPointerMove($event)"
-      (pointerup)="onPointerUp($event)" (pointercancel)="onPointerUp($event)" (pointerout)="onPointerUp($event)"
-    ></div>
-    <img alt="This game needs this image to work. I am sorry." src="assets/img/zopa/fondo.png"/>
-  </div>
+    <div class="wrapper">
+        <div id="one-by-one-aspect-ratio" (pointerdown)="onPointerDown($event)" (pointermove)="onPointerMove($event)" (pointerup)="onPointerUp($event)" (pointercancel)="onPointerUp($event)" (pointerout)="onPointerUp($event)"></div>
+        <img alt="This game needs this image to work. I am sorry." src="assets/img/zopa/fondo.png" />
+    </div>
 </div>

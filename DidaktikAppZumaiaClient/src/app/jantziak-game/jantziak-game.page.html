@@ -17,6 +17,6 @@
         </ion-button>
     </div>
     <ng-container *ngFor="let hitz of soluzioa.keys()">
-        <div style="color: black;" [innerText]="answered.has(hitz) ? hitz : ''" [id]="hitz" class="gakoa" [ngStyle]="getStyle(hitz)" [ngClass]="animated.has(hitz) ? 'apply-shake-minus50' : ''" (animationend)="animated.delete(hitz)" (mousedown)="onMouseDown(hitz)"></div>
+        <div style="color:black" [innerText]="answered.has(hitz) ? hitz : ''" [id]="hitz" class="gakoa" [ngStyle]="getStyle(hitz)" [ngClass]="animated.has(hitz) ? 'apply-shake-minus50' : ''" (animationend)="animated.delete(hitz)" (mousedown)="onMouseDown(hitz)"></div>
     </ng-container>
 </ion-content>
