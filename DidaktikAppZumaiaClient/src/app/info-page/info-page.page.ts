@@ -53,6 +53,7 @@ export class InfoPagePage implements OnInit {
   }
 
   ngOnDestroy() {
+    if(this.audio.playing())
     this.audio.pause();
   }
 
